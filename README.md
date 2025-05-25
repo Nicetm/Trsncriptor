@@ -4,7 +4,7 @@ Transcriptor automático de audio con autenticación Google OAuth, interfaz web 
 
 ## Características
 
-- Autenticación con cuenta Google (OAuth2)
+- Autenticación con cuenta Google (OAuth2) (*ver sección de problemas conocidos*)
 - Carga de archivos de audio para transcripción
 - Transcripción automática usando Whisper
 - Diarización de hablantes con PyAnnote
@@ -42,13 +42,15 @@ GOOGLE_CLIENT_SECRET=tu_client_secret
 SECRET_KEY=una_clave_secreta_segura
 ```
 
+> Asegúrate de **no subir tu `.env` a GitHub** ni incluir claves en archivos Python directamente.
+
 ## Uso
 
 ```bash
 python main.py
 ```
 
-Accede a `http://localhost:7860` para usar la interfaz.
+Accede a `http://localhost:7860` para usar la interfaz web.
 
 ## Estructura del Proyecto
 
@@ -74,6 +76,13 @@ transcriber_project/
 - Python 3.10
 - CUDA 11.8 (para usar Torch con GPU)
 - Acceso a credenciales de Google OAuth 2.0
+
+---
+
+## Problemas conocidos y advertencias
+
+- **Autenticación Google OAuth2 no estable:** La sesión no se mantiene correctamente o falla al obtener `user_info`. Se debe revisar el flujo y lectura desde `.env`.
+- **Advertencia de seguridad en `torch.load`:** Actualmente se utiliza con `weights_only=False`, lo que podría permitir cargas inseguras. Recomendado cambiar a `weights_only=True`.
 
 ---
 
