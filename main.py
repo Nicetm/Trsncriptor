@@ -296,14 +296,16 @@ def transcribe_files(files, file_format):
 
 # Interfaz con Gradio
 with gr.Blocks() as demo:
-    gr.Markdown("# Transcriptor de Audio a Texto")
-    with gr.Row():
-        auth_button = gr.Button("Iniciar sesión con Google")
-        logout_button = gr.Button("Cerrar sesión")
+    with gr.Sidebar():
+        gr.Markdown("### Menú")
+        auth_button = gr.Button("Iniciar sesión con Google", size="sm")
+        logout_button = gr.Button("Cerrar sesión", size="sm")
         user_status = gr.Textbox(label="Estado del usuario", interactive=False)
 
-        # Actualiza el estado del usuario
-        user_status.value = update_user_status()
+    gr.Markdown("## Transcriptor de Audio a Texto")
+
+    # Actualiza el estado del usuario
+    user_status.value = update_user_status()
 
     with gr.Row():
         with gr.Column(scale=1):
