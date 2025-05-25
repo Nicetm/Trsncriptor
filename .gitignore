@@ -1,0 +1,28 @@
+# Entorno virtual
+venv/
+.env/
+
+# Archivos y carpetas de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Archivos de audio y sus segmentos
+*.wav
+*_segments/
+
+# Archivos generados por el sistema
+file_registry.json
+
+# Certificados SSL
+cert/
+*.pem
+*.key
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
