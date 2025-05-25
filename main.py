@@ -40,11 +40,10 @@ def load_existing_data():
 
 # Función para inicializar el registro desde un archivo JSON
 def initialize_file_registry():
-    global file_registry
     try:
         with open("file_registry.json", "r") as f:
             file_registry = json.load(f)
-    except FileNotFoundError:
+    except (json.JSONDecodeError, FileNotFoundError):
         file_registry = {}
 
 # Función para guardar el registro en un archivo JSON
